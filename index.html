@@ -286,12 +286,12 @@
               Use this personalized guide to get your store up and running.
             </p>
             <div class="setup-range flex items-center gap-lg">
-              <p class="text-xs"><span>1</span> / 5 completed</p>
-              <input type="range" value="20" name="progress" id="progress" />
+              <p class="text-xs"><span id="range-count">0</span> / 5 completed</p>
+              <input type="range" value="0" name="progress" id="progress" />
             </div>
           </div>
           <div class="setup-item-wrap">
-            <div class="setup-item-1 flex-between setup-item">
+            <div id="setup-item-1" class="setup-item-1 flex-between setup-item active">
               <div>
                 <div class="flex items-center gap-md">
                   <div class="checkbox-1 checkbox flex items-center">
@@ -365,7 +365,7 @@
                 />
               </div>
             </div>
-            <div class="setup-item-2 flex-between setup-item">
+            <div id="setup-item-2" class="setup-item-2 flex-between setup-item">
               <div>
                 <div class="flex items-center gap-md">
                   <div class="checkbox-2 checkbox flex items-center">
@@ -444,7 +444,7 @@
                 />
               </div>
             </div>
-            <div class="setup-item-3 flex-between setup-item">
+            <div id="setup-item-3" class="setup-item-3 flex-between setup-item">
               <div>
                 <div class="flex items-center gap-md">
                   <div class="checkbox-3 checkbox flex items-center">
@@ -518,7 +518,7 @@
                 />
               </div>
             </div>
-            <div class="setup-item-4 flex-between setup-item">
+            <div id="setup-item-4" class="setup-item-4 flex-between setup-item">
               <div>
                 <div class="flex items-center gap-md">
                   <div class="checkbox-4 checkbox flex items-center">
@@ -592,10 +592,10 @@
                 />
               </div>
             </div>
-            <div class="setup-item-5 flex-between setup-item">
+            <div id="setup-item-5" class="setup-item-5 flex-between setup-item">
               <div>
                 <div class="flex items-center gap-md">
-                  <div class="checkbox-4 checkbox flex items-center">
+                  <div class="checkbox-5 checkbox flex items-center">
                     <svg
                       class="checkbox-default"
                       xmlns="http://www.w3.org/2000/svg"
