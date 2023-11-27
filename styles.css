@@ -506,6 +506,10 @@ button {
   height: 100%;
 }
 
+.hidden {
+    display: none !important;
+}
+
 .flex {
   display: flex;
 }
@@ -740,7 +744,6 @@ button {
   position: fixed;
   top: 68px;
   right: 16px;
-  /* display: none; */
 }
 
 .svg-outline:focus {
@@ -750,15 +753,15 @@ button {
 .alert-pop-up {
   padding-left: 16px;
   justify-content: flex-end;
-  display: none;
   max-width: 393px;
+  display: none;
 }
 
 .menu-pop-up {
   padding-left: 16px;
   justify-content: flex-end;
   max-width: 320px;
-  /* display: none; */
+  display: none;
 }
 
 .alerts {
@@ -894,11 +897,11 @@ main {
 }
 
 .set-up.active .setup-open {
-  display: block;
+  display: none;
 }
 
 .set-up.active .setup-close {
-  display: none;
+  display: block ;
 }
 
 .setup-range {

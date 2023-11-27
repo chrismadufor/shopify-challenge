@@ -47,7 +47,7 @@
           <input class="header-search-input" type="text" placeholder="Search" />
         </div>
         <div class="header-right flex items-center gap-md">
-          <button class="header-bell flex-center rounded-md">
+          <button id="alert-btn" class="header-bell flex-center rounded-md">
             <svg
               width="20"
               height="20"
@@ -69,7 +69,7 @@
           </button>
         </div>
       </header>
-      <div class="alert-pop-up menu-pos w-full flex">
+      <div id="alert-pop-up" class="alert-pop-up menu-pos w-full">
         <div class="alerts w-full bg-white p-lg rounded-md">
           <div class="flex-between">
             <p class="text-sm font-semibold">Alerts</p>
@@ -124,7 +124,7 @@
           </div>
         </div>
       </div>
-      <div id="menu-pop-up" class="menu-pop-up menu-pos w-full flex">
+      <div id="menu-pop-up" class="menu-pop-up menu-pos w-full">
         <div class="drop-menu w-full bg-white">
           <div class="drop-menu-section">
             <a href="https://admin.shopify.com" target="_blank"
@@ -219,7 +219,7 @@
         </div>
       </div>
       <main class="w-full mx-auto">
-        <div class="trial gap-md flex justify-between">
+        <div id="trial" class="trial gap-md flex justify-between">
           <div>
             <p>Extend your trial for $1/month for 3 months on select plans.</p>
             <a href="https://shopify.com/pricing" target="_blank"
@@ -229,7 +229,7 @@
           <div class="flex items-center gap-lg trial-action">
             <a href="https://shopify.com/pricing" target="_blank"
               ><button class="lg-show white-btn">Select your plan</button></a>
-            <button class="trial-icon">
+            <button id="trial-icon" class="trial-icon">
               <svg
                 width="20"
                 height="20"
@@ -245,11 +245,11 @@
             </button>
           </div>
         </div>
-        <div class="set-up rounded-md">
+        <div id="set-up-wrap" class="set-up rounded-md">
           <div class="setup-header">
             <div class="flex-between">
               <p class="font-semibold text-sm">Setup guide</p>
-              <button class="icon">
+              <button id="setup-control-icon" class="icon">
                 <svg
                   class="setup-close"
                   width="20"
