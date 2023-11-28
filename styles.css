@@ -945,6 +945,7 @@ main {
 .setup-item-wrap {
   display: flex;
   flex-direction: column;
+  transition: all 2.1s linear;
 }
 
 .setup-header {
@@ -954,6 +955,7 @@ main {
 .setup-item {
   gap: 96px;
   padding: 8px;
+  transition: all 0.1s linear;
 }
 
 .setup-item-img {
@@ -985,7 +987,14 @@ main {
 }
 
 .setup-item-title {
+  height: unset;
+  border-radius: unset;
+  border: none;
+  font-size: 13px;
+  font-weight: 400;
+  padding: unset;
   cursor: pointer;
+  background-color: transparent;
 }
 
 .setup-item-text {

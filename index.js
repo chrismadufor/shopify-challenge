@@ -1,93 +1,120 @@
 // Range
 let progress = document.getElementById("progress");
-
-// aria live
-
-const updateDynamicContent = (str) => {
-  const dynamicContent = document.getElementById("dynamic-content");
-  dynamicContent.ariaLabel = str;
-};
-
-// toggle menu & alert containers
 let menu = document.getElementById("menu-pop-up");
 let menuBtn = document.getElementById("menu-btn");
 let alert = document.getElementById("alert-pop-up");
 let alertBtn = document.getElementById("alert-btn");
+let trialCloseIcon = document.getElementById("trial-icon");
+let trial = document.getElementById("trial");
+let setUpWrap = document.getElementById("set-up-wrap");
+let setUpControlIcon = document.getElementById("setup-control-icon");
+let checkboxItems = document.querySelectorAll(".checkbox");
+let setupItems = document.querySelectorAll(".setup-item");
+let setupItemTitles = document.querySelectorAll(".setup-item-title");
+let rangeCount = document.getElementById("range-count");
+const dynamicContent = document.getElementById("dynamic-content");
+let completeItems = document.querySelectorAll(".complete-step");
+
+// Helper functions
+
+const updateAriaLiveContent = (str) => {
+  dynamicContent.ariaLabel = str;
+};
+
+const updateProgressCountAndProgressBar = () => {
+  let completeSteps = document.querySelectorAll(".complete-step");
+  rangeCount.innerText = completeSteps.length;
+  progress.setAttribute("value", `${completeSteps.length * 20}`);
+  if (completeSteps.length === setupItems.length)
+    updateAriaLiveContent("Fantastic! All sections have been completed");
+};
+
+const closeActiveSetupGuideSection = () => {
+  setupItems.forEach((element) => {
+    element.classList.remove("active");
+  });
+};
+
+const updateAriaLabelText = (element, currentString, newString) => {
+  element.ariaLabel = element.ariaLabel.replace(currentString, newString);
+};
+
+const openNextIncompleteSetupGuideSection = (index) => {
+  let count;
+  if (index + 1 === setupItems.length) count = 0;
+  else count = index + 1;
+  while (count < setupItems.length) {
+    if (!setupItems[count].classList.contains("complete-step")) {
+      // we found one!
+      closeActiveSetupGuideSection();
+
+      // open next incomplete section
+      setupItems[count].classList.add("active");
+
+      // focus on the next incomplete section
+      let checkbox = setupItems[count].querySelector(".checkbox");
+      checkbox.focus();
+      break;
+    }
+
+    // restart count is required
+    if (count === index) break;
+    else if (count + 1 === setupItems.length) count = 0;
+    else count++;
+  }
+};
+
+// toggle menu & alert containers
 
 menuBtn.addEventListener("click", () => {
   if (menu.style.display === "none" || menu.style.display === "") {
-    updateDynamicContent("Menu has been opened");
-    menuBtn.ariaLabel = menuBtn.ariaLabel.replace("open", "close");
-    alertBtn.ariaLabel = alertBtn.ariaLabel.replace("close", "open");
     alert.style.display = "none";
     menu.style.display = "flex";
+    updateAriaLiveContent("Menu has been opened");
+    updateAriaLabelText(menuBtn, "open", "close");
+    updateAriaLabelText(alertBtn, "close", "open");
     menu.focus();
   } else {
-    menuBtn.ariaLabel = menuBtn.ariaLabel.replace("close", "open");
-    updateDynamicContent("Menu has been closed");
     menu.style.display = "none";
+    updateAriaLiveContent("Menu has been closed");
+    updateAriaLabelText(menuBtn, "close", "open");
   }
 });
 
 alertBtn.addEventListener("click", () => {
   if (alert.style.display === "none" || alert.style.display === "") {
-    updateDynamicContent("Alert pop up has been opened");
     menu.style.display = "none";
     alert.style.display = "flex";
+    updateAriaLiveContent("Alert pop up has been opened");
+    updateAriaLabelText(alertBtn, "open", "close");
+    updateAriaLabelText(menuBtn, "close", "open");
     alert.focus();
-    alertBtn.ariaLabel = alertBtn.ariaLabel.replace("open", "close");
-    menuBtn.ariaLabel = menuBtn.ariaLabel.replace("close", "open");
   } else {
     alert.style.display = "none";
-    alertBtn.ariaLabel = alertBtn.ariaLabel.replace("close", "open");
-    updateDynamicContent("Alert pop up has been closed");
+    updateAriaLiveContent("Alert pop up has been closed");
+    updateAriaLabelText(alertBtn, "close", "open");
   }
 });
 
 // remove trial container
-let trialCloseIcon = document.getElementById("trial-icon");
-let trial = document.getElementById("trial");
-
 trialCloseIcon.addEventListener("click", () => {
   trial.style.display = "none";
-  updateDynamicContent("Trial section has been closed");
+  updateAriaLiveContent("Trial section has been closed");
   setUpWrap.focus();
 });
 
 // toggle set up guide
-let setUpWrap = document.getElementById("set-up-wrap");
-let setUpControlIcon = document.getElementById("setup-control-icon");
-
 setUpControlIcon.addEventListener("click", () => {
-  // setUpWrap.classList.toggle("active");
   if (setUpWrap.classList.contains("active")) {
     setUpWrap.classList.remove("active");
-    alertBtn.ariaLabel = alertBtn.ariaLabel.replace("close", "open");
-    updateDynamicContent("Set up guide has been collapsed");
+    updateAriaLiveContent("Set up guide has been collapsed");
+    updateAriaLabelText(setUpControlIcon, "collapse", "expand");
   } else {
     setUpWrap.classList.add("active");
-    alertBtn.ariaLabel = alertBtn.ariaLabel.replace("open", "close");
-    updateDynamicContent("Set up guide has been expanded");
+    updateAriaLiveContent("Set up guide has been expanded");
+    updateAriaLabelText(setUpControlIcon, "expand", "collapse");
   }
 });
-
-const updateRange = () => {
-  // update range count and progress bar
-  let completeSteps = document.querySelectorAll(".complete-step");
-  rangeCount.innerText = completeSteps.length;
-  progress.setAttribute("value", `${completeSteps.length * 20}`);
-};
-
-let checkboxItems = document.querySelectorAll(".checkbox");
-let setupItems = document.querySelectorAll(".setup-item");
-let setupItemTitles = document.querySelectorAll(".setup-item-title");
-let rangeCount = document.getElementById("range-count");
-
-const closeSetUpItem = () => {
-  setupItems.forEach((element) => {
-    element.classList.remove("active");
-  });
-};
 
 // checkbox toggle
 checkboxItems.forEach((item, index) => {
@@ -95,35 +122,29 @@ checkboxItems.forEach((item, index) => {
     if (item.classList.contains("active")) {
       item.classList.remove("active");
       item.classList.add("loading");
+      updateAriaLiveContent("Loading. Please wait.");
       setTimeout(() => {
         item.classList.remove("loading");
         setupItems[index].classList.remove("complete-step");
-        closeSetUpItem();
         setupItems[index].classList.add("active");
-        updateRange();
-      }, 800);
+        closeActiveSetupGuideSection();
+        updateProgressCountAndProgressBar();
+        updateAriaLiveContent("Take your time! Section marked as incomplete");
+        updateAriaLabelText(item, "as not done", "as done");
+      }, 1000);
     } else {
       item.classList.add("loading");
+      updateAriaLiveContent("Loading. Please wait.");
       setTimeout(() => {
         item.classList.remove("loading");
         item.classList.add("active");
         setupItems[index].classList.remove("active");
         setupItems[index].classList.add("complete-step");
-        updateRange();
-        let count;
-        if (index + 1 === setupItems.length) count = 0;
-        else count = index + 1;
-        while (count < setupItems.length) {
-          if (!setupItems[count].classList.contains("complete-step")) {
-            closeSetUpItem();
-            setupItems[count].classList.add("active");
-            break;
-          }
-          if (count === index) break;
-          else if (count + 1 === setupItems.length) count = 0;
-          else count++;
-        }
-      }, 800);
+        updateProgressCountAndProgressBar();
+        openNextIncompleteSetupGuideSection(index);
+        updateAriaLiveContent("Great job! Section completed");
+        updateAriaLabelText(item, "as done", "as not done");
+      }, 1000);
     }
   });
 });
@@ -131,7 +152,7 @@ checkboxItems.forEach((item, index) => {
 // open setup guide section on title click
 setupItemTitles.forEach((item, index) => {
   item.addEventListener("click", () => {
-    closeSetUpItem();
+    closeActiveSetupGuideSection();
     setupItems[index].classList.add("active");
   });
 });

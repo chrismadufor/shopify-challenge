@@ -147,7 +147,7 @@
             class="header-name flex items-center rounded-md"
           >
             <p class="lg-show">Davii Collections</p>
-            <div class="header-green text-xs flex-center h-full">DC</div>
+            <div aria-hidden="true" class="header-green text-xs flex-center h-full">DC</div>
           </button>
           <div
             tabindex="0"
@@ -285,15 +285,16 @@
               href="https://shopify.com/pricing"
               target="_blank"
               class="lg-hide trial-btn white-btn text-black"
-              >Select your plan</a
+              >Select a plan</a
             >
           </div>
           <div class="flex items-center gap-lg trial-action">
             <a
+              aria-label="Select a plan"
               href="https://shopify.com/pricing"
               target="_blank"
               class="lg-show trial-btn white-btn text-black"
-              >Select your plan</a
+              >Select a plan</a
             >
             <button
               aria-label="click to close trial section"
@@ -443,13 +444,12 @@
                       ></path>
                     </svg>
                   </button>
-                  <p
-                    tabindex="0"
-                    aria-label="Click to expand current step"
+                  <button
+                    aria-label="Click to expand customize your online store section"
                     class="setup-item-title"
                   >
-                    <span aria-hidden="true">Customize your online store</span>
-                  </p>
+                    Customize your online store
+                  </button>
                 </div>
                 <div class="setup-item-main">
                   <div class="setup-item-text">
@@ -459,7 +459,12 @@
                     </p>
                     <a class="link" href="">Learn more</a>
                   </div>
-                  <button class="black-btn">Customize theme</button>
+                  <button
+                    aria-label="Click to customize theme"
+                    class="black-btn"
+                  >
+                    Customize theme
+                  </button>
                 </div>
               </div>
               <div class="setup-item-img">
@@ -469,12 +474,19 @@
                 />
               </div>
             </section>
-            <section aria-label="Step 2 - Add your first product" id="setup-item-2" class="setup-item-2 flex-between setup-item">
+            <section
+              aria-label="Step 2 - Add your first product"
+              id="setup-item-2"
+              class="setup-item-2 flex-between setup-item"
+            >
               <div>
                 <div class="flex items-center gap-md">
-                  <button aria-label="Click to mark add your first product as done" class="checkbox-2 checkbox flex items-center">
+                  <button
+                    aria-label="Click to mark add your first product as done"
+                    class="checkbox-2 checkbox flex items-center"
+                  >
                     <svg
-                    aria-hidden="true"
+                      aria-hidden="true"
                       class="checkbox-default"
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -494,7 +506,7 @@
                       />
                     </svg>
                     <svg
-                    aria-hidden="true"
+                      aria-hidden="true"
                       class="checkbox-loading"
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -511,7 +523,7 @@
                       />
                     </svg>
                     <svg
-                    aria-hidden="true"
+                      aria-hidden="true"
                       class="checkbox-complete"
                       width="24"
                       height="24"
@@ -526,12 +538,12 @@
                       ></path>
                     </svg>
                   </button>
-                  <p
-                    tabindex="0"
-                    aria-label="Click to expand current step"
+                  <button
+                    aria-label="Click to expand add your first product section"
                     class="setup-item-title"
                   >
-                    <span aria-hidden="true">Add your first product</span></p>
+                    Add your first product
+                  </button>
                 </div>
                 <div class="setup-item-main">
                   <div class="setup-item-text">
@@ -542,8 +554,16 @@
                     </p>
                   </div>
                   <div class="flex items-center btn-wrap">
-                    <button class="black-btn">Add product</button>
-                    <button class="font-semibold plain-btn import-btn">
+                    <button
+                      aria-label="Click to add products"
+                      class="black-btn"
+                    >
+                      Add product
+                    </button>
+                    <button
+                      aria-label="Click to import products"
+                      class="font-semibold plain-btn import-btn"
+                    >
                       Import product
                     </button>
                   </div>
@@ -556,11 +576,19 @@
                 />
               </div>
             </section>
-            <div id="setup-item-3" class="setup-item-3 flex-between setup-item">
+            <section
+              aria-label="Step 3 - Add custom domain"
+              id="setup-item-3"
+              class="setup-item-3 flex-between setup-item"
+            >
               <div>
                 <div class="flex items-center gap-md">
-                  <div class="checkbox-3 checkbox flex items-center">
+                  <button
+                    aria-label="Click to mark add custom domain step as done"
+                    class="checkbox-3 checkbox flex items-center"
+                  >
                     <svg
+                      aria-hidden="true"
                       class="checkbox-default"
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -580,6 +608,7 @@
                       />
                     </svg>
                     <svg
+                      aria-hidden="true"
                       class="checkbox-loading"
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -596,6 +625,7 @@
                       />
                     </svg>
                     <svg
+                      aria-hidden="true"
                       class="checkbox-complete"
                       width="24"
                       height="24"
@@ -609,8 +639,13 @@
                         fill="#fff"
                       ></path>
                     </svg>
-                  </div>
-                  <p class="setup-item-title">Add custom domain</p>
+                  </button>
+                  <button
+                    aria-label="Click to expand add custom domain section"
+                    class="setup-item-title"
+                  >
+                    Add custom domain
+                  </button>
                 </div>
                 <div class="setup-item-main">
                   <div class="setup-item-text">
@@ -620,7 +655,9 @@
                       store. <a class="link" href="">Learn more</a>
                     </p>
                   </div>
-                  <button class="black-btn">Add domain</button>
+                  <button aria-label="click to add domain" class="black-btn">
+                    Add domain
+                  </button>
                 </div>
               </div>
               <div class="setup-item-img">
@@ -629,12 +666,20 @@
                   alt="add custom domain"
                 />
               </div>
-            </div>
-            <div id="setup-item-4" class="setup-item-4 flex-between setup-item">
+            </section>
+            <section
+              aria-label="Section 4 - Name your store"
+              id="setup-item-4"
+              class="setup-item-4 flex-between setup-item"
+            >
               <div>
                 <div class="flex items-center gap-md">
-                  <div class="checkbox-4 checkbox flex items-center">
+                  <button
+                    aria-label="Click to mark name your store step as done"
+                    class="checkbox-4 checkbox flex items-center"
+                  >
                     <svg
+                      aria-hidden="true"
                       class="checkbox-default"
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -654,6 +699,7 @@
                       />
                     </svg>
                     <svg
+                      aria-hidden="true"
                       class="checkbox-loading"
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -670,6 +716,7 @@
                       />
                     </svg>
                     <svg
+                      aria-hidden="true"
                       class="checkbox-complete"
                       width="24"
                       height="24"
@@ -683,8 +730,13 @@
                         fill="#fff"
                       ></path>
                     </svg>
-                  </div>
-                  <p class="setup-item-title">Name your store</p>
+                  </button>
+                  <button
+                    aria-label="click to expand name your store section"
+                    class="setup-item-title"
+                  >
+                    Name your store
+                  </button>
                 </div>
                 <div class="setup-item-main">
                   <div class="setup-item-text">
@@ -694,7 +746,9 @@
                       store. <a class="link" href="">Learn more</a>
                     </p>
                   </div>
-                  <button class="black-btn">Name store</button>
+                  <button aria-label="Click to name store" class="black-btn">
+                    Name store
+                  </button>
                 </div>
               </div>
               <div class="setup-item-img">
@@ -703,12 +757,20 @@
                   alt="name store"
                 />
               </div>
-            </div>
-            <div id="setup-item-5" class="setup-item-5 flex-between setup-item">
+            </section>
+            <section
+              aria-label="Section 5 - Set up a payment provider"
+              id="setup-item-5"
+              class="setup-item-5 flex-between setup-item"
+            >
               <div>
                 <div class="flex items-center gap-md">
-                  <div class="checkbox-5 checkbox flex items-center">
+                  <button
+                    aria-label="Click to mark set up a payment provider step as done"
+                    class="checkbox-5 checkbox flex items-center"
+                  >
                     <svg
+                      aria-hidden="true"
                       class="checkbox-default"
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -728,6 +790,7 @@
                       />
                     </svg>
                     <svg
+                      aria-hidden="true"
                       class="checkbox-loading"
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -744,6 +807,7 @@
                       />
                     </svg>
                     <svg
+                      aria-hidden="true"
                       class="checkbox-complete"
                       width="24"
                       height="24"
@@ -757,8 +821,13 @@
                         fill="#fff"
                       ></path>
                     </svg>
-                  </div>
-                  <p class="setup-item-title">Set up a payment provider</p>
+                  </button>
+                  <button
+                    aria-label="Click to expand set up a payment provider section"
+                    class="setup-item-title"
+                  >
+                    Set up a payment provider
+                  </button>
                 </div>
                 <div class="setup-item-main">
                   <div class="setup-item-text">
@@ -778,7 +847,7 @@
                   alt="set up payments"
                 />
               </div>
-            </div>
+            </section>
           </div>
         </section>
       </main>
