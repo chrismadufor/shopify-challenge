@@ -1,8 +1,6 @@
 // Range
 let progress = document.getElementById("progress");
 
-progress.style.background = `linear-gradient(to right, #1a1a1a 0%, #1a1a1a ${progress.value}%, #e3e3e3 ${progress.value}%, #e3e3e3 100%)`;
-
 // aria live
 
 const updateDynamicContent = (str) => {
@@ -18,9 +16,17 @@ let alertBtn = document.getElementById("alert-btn");
 
 menuBtn.addEventListener("click", () => {
   if (menu.style.display === "none" || menu.style.display === "") {
+    updateDynamicContent("Menu has been opened");
+    menuBtn.ariaLabel = menuBtn.ariaLabel.replace("open", "close");
+    alertBtn.ariaLabel = alertBtn.ariaLabel.replace("close", "open");
     alert.style.display = "none";
     menu.style.display = "flex";
-  } else menu.style.display = "none";
+    menu.focus();
+  } else {
+    menuBtn.ariaLabel = menuBtn.ariaLabel.replace("close", "open");
+    updateDynamicContent("Menu has been closed");
+    menu.style.display = "none";
+  }
 });
 
 alertBtn.addEventListener("click", () => {
@@ -30,8 +36,10 @@ alertBtn.addEventListener("click", () => {
     alert.style.display = "flex";
     alert.focus();
     alertBtn.ariaLabel = alertBtn.ariaLabel.replace("open", "close");
+    menuBtn.ariaLabel = menuBtn.ariaLabel.replace("close", "open");
   } else {
     alert.style.display = "none";
+    alertBtn.ariaLabel = alertBtn.ariaLabel.replace("close", "open");
     updateDynamicContent("Alert pop up has been closed");
   }
 });
@@ -42,6 +50,8 @@ let trial = document.getElementById("trial");
 
 trialCloseIcon.addEventListener("click", () => {
   trial.style.display = "none";
+  updateDynamicContent("Trial section has been closed");
+  setUpWrap.focus();
 });
 
 // toggle set up guide
@@ -49,7 +59,16 @@ let setUpWrap = document.getElementById("set-up-wrap");
 let setUpControlIcon = document.getElementById("setup-control-icon");
 
 setUpControlIcon.addEventListener("click", () => {
-  setUpWrap.classList.toggle("active");
+  // setUpWrap.classList.toggle("active");
+  if (setUpWrap.classList.contains("active")) {
+    setUpWrap.classList.remove("active");
+    alertBtn.ariaLabel = alertBtn.ariaLabel.replace("close", "open");
+    updateDynamicContent("Set up guide has been collapsed");
+  } else {
+    setUpWrap.classList.add("active");
+    alertBtn.ariaLabel = alertBtn.ariaLabel.replace("open", "close");
+    updateDynamicContent("Set up guide has been expanded");
+  }
 });
 
 const updateRange = () => {
@@ -57,7 +76,6 @@ const updateRange = () => {
   let completeSteps = document.querySelectorAll(".complete-step");
   rangeCount.innerText = completeSteps.length;
   progress.setAttribute("value", `${completeSteps.length * 20}`);
-  progress.style.background = `linear-gradient(to right, #1a1a1a 0%, #1a1a1a ${progress.value}%, #e3e3e3 ${progress.value}%, #e3e3e3 100%)`;
 };
 
 let checkboxItems = document.querySelectorAll(".checkbox");
