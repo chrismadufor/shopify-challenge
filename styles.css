@@ -955,7 +955,11 @@ main {
 .setup-item {
   gap: 96px;
   padding: 8px;
-  transition: all 0.1s linear;
+  transition: all 0.2s linear;
+}
+
+.setup-item:focus {
+  border: none !important;
 }
 
 .setup-item-img {
@@ -1012,7 +1016,7 @@ main {
 }
 
 /* Range */
-input[type="range"], progress {
+progress {
   background: linear-gradient(
     to right,
     #1a1a1a 0%,
@@ -1038,10 +1042,7 @@ progress::-webkit-progress-bar {
 progress::-webkit-progress-value {
   background: #1a1a1a;
   border-radius: 8px !important;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
+  transition: width 0.3s linear;
 }
 
 /*  */

@@ -50,10 +50,8 @@ const openNextIncompleteSetupGuideSection = (index) => {
 
       // open next incomplete section
       setupItems[count].classList.add("active");
-
       // focus on the next incomplete section
-      let checkbox = setupItems[count].querySelector(".checkbox");
-      checkbox.focus();
+      setupItems[count].focus();
       break;
     }
 
@@ -100,7 +98,7 @@ alertBtn.addEventListener("click", () => {
 trialCloseIcon.addEventListener("click", () => {
   trial.style.display = "none";
   updateAriaLiveContent("Trial section has been closed");
-  setUpWrap.focus();
+  trialCloseIcon.blur()
 });
 
 // toggle set up guide
@@ -122,19 +120,19 @@ checkboxItems.forEach((item, index) => {
     if (item.classList.contains("active")) {
       item.classList.remove("active");
       item.classList.add("loading");
-      updateAriaLiveContent("Loading. Please wait.");
+      updateAriaLiveContent("Loading.");
       setTimeout(() => {
         item.classList.remove("loading");
+        closeActiveSetupGuideSection();
         setupItems[index].classList.remove("complete-step");
         setupItems[index].classList.add("active");
-        closeActiveSetupGuideSection();
         updateProgressCountAndProgressBar();
-        updateAriaLiveContent("Take your time! Section marked as incomplete");
+        updateAriaLiveContent("Take your time! Step marked as incomplete");
         updateAriaLabelText(item, "as not done", "as done");
-      }, 1000);
+      }, 1200);
     } else {
       item.classList.add("loading");
-      updateAriaLiveContent("Loading. Please wait.");
+      updateAriaLiveContent("Loading.");
       setTimeout(() => {
         item.classList.remove("loading");
         item.classList.add("active");
@@ -142,9 +140,12 @@ checkboxItems.forEach((item, index) => {
         setupItems[index].classList.add("complete-step");
         updateProgressCountAndProgressBar();
         openNextIncompleteSetupGuideSection(index);
-        updateAriaLiveContent("Great job! Section completed");
         updateAriaLabelText(item, "as done", "as not done");
-      }, 1000);
+        let completeSteps = document.querySelectorAll(".complete-step");
+        if (completeSteps.length === setupItems.length)
+          updateAriaLiveContent("Fantastic! All steps have been completed");
+        else updateAriaLiveContent("Great job! Previous step completed");
+      }, 1200);
     }
   });
 });
