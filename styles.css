@@ -393,6 +393,10 @@ ul {
   padding: 0;
 }
 
+.trial-btn {
+  max-width: 120px;
+}
+
 button, .trial-btn {
   height: 28px;
   border-radius: 6px;
