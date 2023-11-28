@@ -14,6 +14,7 @@
   </head>
   <body>
     <div class="container">
+      <span aria-live="polite" role="presentation" id="dynamic-content"></span>
       <header class="flex justify-between gap-md items-center header">
         <a href="https://shopify.com" target="_blank">
           <div class="logo">
@@ -47,8 +48,14 @@
           <input class="header-search-input" type="text" placeholder="Search" />
         </div>
         <div class="header-right flex items-center gap-md">
-          <button id="alert-btn" class="header-bell flex-center rounded-md">
+          <button
+            aria-label="open alerts"
+            aria-controls="alert-pop-up"
+            id="alert-btn"
+            class="header-bell flex-center rounded-md"
+          >
             <svg
+              aria-hidden="true"
               width="20"
               height="20"
               viewBox="0 0 21 20"
@@ -63,19 +70,31 @@
               />
             </svg>
           </button>
-          <button id="menu-btn" class="header-name flex items-center rounded-md">
+          <button
+            id="menu-btn"
+            class="header-name flex items-center rounded-md"
+          >
             <p class="lg-show">Davii Collections</p>
             <div class="header-green text-xs flex-center h-full">DC</div>
           </button>
         </div>
       </header>
-      <div id="alert-pop-up" class="alert-pop-up menu-pos w-full">
+      <div tabindex="0"
+        id="alert-pop-up"
+        aria-label="Alerts pop up"
+        class="alert-pop-up menu-pos w-full"
+      >
         <div class="alerts w-full bg-white p-lg rounded-md">
           <div class="flex-between">
-            <p class="text-sm font-semibold">Alerts</p>
+            <p id="alert-title" class="text-sm font-semibold">Alerts</p>
             <div class="flex items-center gap-md">
-              <button class="icon">
+              <button
+                id="filter-alerts"
+                aria-label="filter alerts"
+                class="icon"
+              >
                 <svg
+                  aria-hidden="true"
                   class="svg-outline"
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -97,8 +116,9 @@
                   />
                 </svg>
               </button>
-              <button class="icon">
+              <button aria-label="mark alerts as read" class="icon">
                 <svg
+                  aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
                   height="20"
@@ -228,7 +248,8 @@
           </div>
           <div class="flex items-center gap-lg trial-action">
             <a href="https://shopify.com/pricing" target="_blank"
-              ><button class="lg-show white-btn">Select your plan</button></a>
+              ><button class="lg-show white-btn">Select your plan</button></a
+            >
             <button id="trial-icon" class="trial-icon">
               <svg
                 width="20"
@@ -286,12 +307,17 @@
               Use this personalized guide to get your store up and running.
             </p>
             <div class="setup-range flex items-center gap-lg">
-              <p class="text-xs"><span id="range-count">0</span> / 5 completed</p>
+              <p class="text-xs">
+                <span id="range-count">0</span> / 5 completed
+              </p>
               <input type="range" value="0" name="progress" id="progress" />
             </div>
           </div>
           <div class="setup-item-wrap">
-            <div id="setup-item-1" class="setup-item-1 flex-between setup-item active">
+            <div
+              id="setup-item-1"
+              class="setup-item-1 flex-between setup-item active"
+            >
               <div>
                 <div class="flex items-center gap-md">
                   <div class="checkbox-1 checkbox flex items-center">
