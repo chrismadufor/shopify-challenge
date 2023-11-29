@@ -394,7 +394,7 @@ ul {
 }
 
 .trial-btn {
-  max-width: 120px;
+  max-width: 100px;
 }
 
 button, .trial-btn {
@@ -1121,8 +1121,12 @@ progress::-webkit-progress-value {
   }
 
   .header-name {
-    padding: 0;
+    padding: 0px;
     background-color: transparent;
+  }
+
+  .header-name:active, .header-name:hover {
+    padding: 2px;
   }
 
   .header-bell {
